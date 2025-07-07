@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML Prediction Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f7f7f7;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .plot {
+            margin: 20px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>📊 ML Prediction Results</h1>
+
+<div class="section">
+    <h2>📅 Timestamp</h2>
+    <p>{{ results.timestamp }}</p>
+</div>
+
+<!-- Sales Section -->
+{% if results.detected_type == 'sales' %}
+<div class="section">
+    <h2>💰 Top-Selling Products</h2>
+    {% if results.sales_summary %}
+    <ul>
+        {% for item in results.sales_summary %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No sales data available.</p>
+    {% endif %}
+
+    {% if results.top5_plot %}
+    <div class="plot">
+        <h3>🏆 Top 5 Products</h3>
+        <img src="{{ url_for('static', filename='plots/' + results.top5_plot) }}" alt="Top 5 Products">
+    </div>
+    {% endif %}
+</div>
+
+<div class="section">
+    <h2>🌍 Sales by Location</h2>
+    {% if results.location_summary %}
+    <ul>
+        {% for item in results.location_summary %}
+        <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No location-based sales data available.</p>
+    {% endif %}
+</div>
+
+<div class="section">
+    <h2>📈 Revenue Growth Forecast</h2>
+    <p>{{ results.sales_prediction }}</p>
+
+    {% if results.growth_plot %}
+    <div class="plot">
+        <h3>📊 Sales Growth Trend</h3>
+        <img src="{{ url_for('static', filename='plots/' + results.growth_plot) }}" alt="Growth Forecast">
+    </div>
+    {% endif %}
+</div>
+
+<div class="section">
+    <h2>👥 Customer Behavior</h2>
+    <p>{{ results.customer_behavior }}</p>
+</div>
+{% endif %}
+
+<!-- Stock Section -->
+{% if results.detected_type == 'stock' %}
+<div class="section">
+    <h2>🔍 Search Stock Symbol</h2>
+    <div class="search-box">
+        <form method="POST" action="/search_stock">
+            <input type="text" name="symbol" placeholder="Enter stock symbol (e.g., CDSL)" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% if results.searched_symbol %}
+    <h3>🔎 Showing trend for: {{ results.searched_symbol }}</h3>
+    {% endif %}
+
+    {% if results.stock_plot %}
+    <div class="plot">
+        <h3>📉 Stock Price Forecast</h3>
+        <img src="{{ url_for('static', filename='plots/' + results.stock_plot) }}" alt="Stock Trend">
+    </div>
+    {% endif %}
+
+    {% if results.stock_prediction %}
+    <p>{{ results.stock_prediction }}</p>
+    {% endif %}
+{% endif %}
+
+<!-- Campaign Section -->
+{% if results.detected_type == 'campaign' %}
+<div class="section">
+    <h2>📢 Campaign Insights</h2>
+    <p>{{ results.campaign_success }}</p>
+</div>
+{% endif %}
+
+<!-- Generic Value Prediction (if available) -->
+{% if results.rf_prediction %}
+<div class="section">
+    <h2>🔢 Predicted Value</h2>
+    <p>{{ results.rf_prediction }}</p>
+</div>
+{% endif %}
+
+<!-- System Feedback -->
+<div class="section">
+    <h2>📌 System Feedback</h2>
+    <ul>
+        {% for note in results.feedback %}
+        <li>{{ note }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

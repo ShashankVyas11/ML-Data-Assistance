@@ -1,0 +1,12 @@
+Flask
+pandas
+numpy
+scikit-learn
+xgboost
+matplotlib
+seaborn
+chardet
+prophet
+plotly
+joblib
+openpyxl

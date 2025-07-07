@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ML Data Assistant - Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf6f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: #fff0f0;
+            border: 1px solid #f5c6cb;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        p {
+            color: #333;
+            background-color: #fce4e4;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        a button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a button:hover {
+            background-color: #217dbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚠️ Oops! An Error Occurred</h1>
+
+        {% if error %}
+            <p>{{ error }}</p>
+        {% else %}
+            <p>Something went wrong. Please try again.</p>
+        {% endif %}
+
+        <a href="/"><button>🔁 Return to Home</button></a>
+    </div>
+</body>
+</html>
+this is error.html 

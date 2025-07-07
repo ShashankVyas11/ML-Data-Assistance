@@ -1,0 +1,115 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f8f8f8, #e9ecef);
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(6px);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+}
+
+.container:hover {
+    transform: scale(1.005);
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+form input[type="file"],
+form select,
+form input[type="submit"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fff;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+form input[type="file"]:hover,
+form select:hover,
+form input[type="submit"]:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+form input[type="submit"],
+button {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    padding: 14px;
+}
+
+form input[type="submit"]:hover,
+button:hover {
+    background: linear-gradient(135deg, #45a049, #2e7d32);
+}
+
+button {
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.flash-message {
+    padding: 12px;
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    border-radius: 8px;
+    color: #856404;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
